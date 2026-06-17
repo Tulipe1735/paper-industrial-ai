@@ -1,4 +1,4 @@
-# LaTeX 辅助文件
+# LaTeX 辅助文件（Overleaf 自动处理，本地上传前忽略）
 *.aux
 *.bbl
 *.bcf
@@ -12,10 +12,6 @@
 *.lot
 *.fls
 *.fdb_latexmk
-
-# 编译产物
-*.pdf
-main.pdf
 
 # Zotero
 *zotero*

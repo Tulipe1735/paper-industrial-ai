@@ -3,19 +3,19 @@
 > 《以OpenAI GPT为代表的大模型技术在工业领域中的应用前景分析》
 > 截止：2026-07-05 | 个人作业 | 目标一周完成（6/17-6/24）
 > 主线：B-融合驱动 | 分析模型：三层融合架构 | 案例：Tesla + Siemens
-> 工具链：**Zotero（文献管理）+ LaTeX/XeLaTeX（排版）**
+> 工具链：**Zotero（文献管理）+ Overleaf / XeLaTeX（排版）**
 
 ---
 
 ## 项目结构
 
 ```
-paper/
-├── main.tex          # 论文主文件（XeLaTeX编译）
-├── refs.bib          # BibTeX/BibLaTeX参考文献（Zotero导出Better BibTeX）
+paper-industrial-ai/
+├── main.tex          # 论文主文件（Overleaf 在线编译）
+├── refs.bib          # BibTeX/BibLaTeX参考文献（Zotero + Better BibTeX导出）
 ├── issues.md         # 本文件
 ├── references.md     # 文献阅读清单（搜索阶段的中间产物）
-└── .gitignore        # 忽略LaTeX辅助文件和PDF
+└── .gitignore        # 忽略LaTeX辅助文件
 ```
 
 ---
@@ -186,8 +186,8 @@ paper/
 **Blocked by:** Issue 8
 **Type:** HITL — 最终人工审核
 
-1. `xelatex main` → `biber main` → `xelatex main` → `xelatex main`
-2. 检查 PDF 输出：标题层级、图表编号、引用格式
+1. Overleaf 编译（自动 xelatex + biber），检查 PDF 输出
+2. 检查：标题层级、图表编号、引用格式
 3. 错误修正 + 语言润色
 4. 打包 zip：班级-学号-姓名.zip
 5. 上传 FTP
