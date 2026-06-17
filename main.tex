@@ -111,34 +111,38 @@ GPT系列的发展轨迹集中体现了这一技术栈的快速成熟。GPT-3（
   milestone/.style={circle,draw,minimum size=0.9cm,align=center,font=\footnotesize,fill=white},
   event/.style={rectangle,draw,minimum width=3.2cm,minimum height=1.2cm,align=center,font=\footnotesize,rounded corners,fill=gray!5},
   arrow/.style={->,>=stealth,thick},
-  dasharrow/.style={->,>=stealth,thick,dashed}
+  connect/.style={dashed,gray,thin},
 ]
-% 时间轴
-\draw[thick] (0,0) -- (14,0);
+% 时间轴（右端预留空间给 2025+ 节点）
+\draw[thick] (0,0) -- (14.8,0);
 \foreach \x/\y in {0/2019,3.5/2020,7/2022,10.5/2024,14/2025+}
   \draw[thick] (\x,-0.15) -- (\x,0.15) node[above,font=\small] {\y};
 
-% GPT 里程碑
-\node[milestone,fill=blue!10] at (3.5,-1.8) {\textbf{GPT-3}};
-\node[event,below=0.3cm of $(3.5,-1.8)+(0,-0.5)$,fill=blue!5] {175B参数\\Few-shot\\Scaling Law};
+% GPT 里程碑（时间轴下方）
+\node[milestone,fill=blue!10] (gpt3) at (3.5,-1.8) {\textbf{GPT-3}};
+\node[event,below=0.3cm of gpt3,fill=blue!5] {175B参数\\Few-shot\\Scaling Law};
+\draw[connect] (3.5,0) -- (gpt3.north);
 
-\node[milestone,fill=blue!20] at (7,-1.8) {\textbf{GPT-3.5}};
-\node[event,below=0.3cm of $(7,-1.8)+(0,-0.5)$,fill=blue!10] {RLHF对齐\\ChatGPT发布\\2月破亿用户};
+\node[milestone,fill=blue!20] (gpt35) at (7,-1.8) {\textbf{GPT-3.5}};
+\node[event,below=0.3cm of gpt35,fill=blue!10] {RLHF对齐\\ChatGPT发布\\2月破亿用户};
+\draw[connect] (7,0) -- (gpt35.north);
 
-\node[milestone,fill=blue!30] at (10.5,-1.8) {\textbf{GPT-4/GPT-4o}};
-\node[event,below=0.3cm of $(10.5,-1.8)+(0,-0.5)$,fill=blue!15] {多模态融合\\推理跨越\\Agent能力};
+\node[milestone,fill=blue!30] (gpt4) at (10.5,-1.8) {\textbf{GPT-4/GPT-4o}};
+\node[event,below=0.3cm of gpt4,fill=blue!15] {多模态融合\\推理跨越\\Agent能力};
+\draw[connect] (10.5,0) -- (gpt4.north);
 
-% 工业渗透事件
-\node[milestone,fill=green!15] at (10.5,1.8) {\textbf{2024}};
-\node[event,above=0.3cm of $(10.5,1.8)+(0,0.5)$,fill=green!5] {Siemens Copilot\\华为盘古规模化\\SAP集成GPT};
+% 工业渗透事件（时间轴上方）
+\node[milestone,fill=green!15] (ind2024) at (10.5,1.8) {\textbf{工业爆发}};
+\node[event,above=0.3cm of ind2024,fill=green!5] {Siemens Copilot\\华为盘古规模化\\SAP集成GPT};
+\draw[connect] (10.5,0) -- (ind2024.south);
 
-\node[milestone,fill=green!25] at (14,1.8) {\textbf{2025+}};
-\node[event,above=0.3cm of $(14,1.8)+(0,0.5)$,fill=green!10] {工控Copilot竞赛\\边缘推理标配化\\多模态融合加速};
+\node[milestone,fill=green!25] (ind2025) at (14,1.8) {\textbf{趋势展望}};
+\node[event,above=0.3cm of ind2025,fill=green!10] {工控Copilot竞赛\\边缘推理标配化\\多模态融合加速};
+\draw[connect] (14,0) -- (ind2025.south);
 
-% 能力箭头标注
-\draw[dasharrow,gray] (3.5,-3.8) -- node[right,font=\tiny,text width=1.5cm,align=center]{文本生成} (3.5,-3.8);
-\node[font=\footnotesize,anchor=west] at (7.5,-3.8) {能力演进方向: NLU → 推理 → 多模态 → Agent};
-\draw[arrow,gray,thick] (6,-3.8) -- (13,-3.8);
+% 能力演进方向
+\draw[arrow,gray,thick] (2.0,-5.8) -- (12.0,-5.8);
+\node[font=\footnotesize] at (7.0,-5.4) {能力演进方向: NLU → 推理 → 多模态 → Agent};
 \end{tikzpicture}
 \caption{GPT系列能力演进与工业渗透时间线（2020--2025）}
 \label{fig:gpt-timeline}
