@@ -1,0 +1,30 @@
+# LaTeX 辅助文件
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+
+# 编译产物
+*.pdf
+main.pdf
+
+# Zotero
+*zotero*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.bak
+*.swp
+*~

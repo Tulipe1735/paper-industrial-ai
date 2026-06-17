@@ -3,37 +3,57 @@
 > 《以OpenAI GPT为代表的大模型技术在工业领域中的应用前景分析》
 > 截止：2026-07-05 | 个人作业 | 目标一周完成（6/17-6/24）
 > 主线：B-融合驱动 | 分析模型：三层融合架构 | 案例：Tesla + Siemens
+> 工具链：**Zotero（文献管理）+ LaTeX/XeLaTeX（排版）**
 
 ---
 
-## Issue 1: 资料搜集与文献整理
+## 项目结构
+
+```
+paper/
+├── main.tex          # 论文主文件（XeLaTeX编译）
+├── refs.bib          # BibTeX/BibLaTeX参考文献（Zotero导出Better BibTeX）
+├── issues.md         # 本文件
+├── references.md     # 文献阅读清单（搜索阶段的中间产物）
+└── .gitignore        # 忽略LaTeX辅助文件和PDF
+```
+
+---
+
+## Issue 0: 环境搭建
 
 **Blocked by:** 无
+**Type:** AFK — 已完成
 
-搜集三大方向的文献（CNKI + Google Scholar），整理成文献清单：
+- [x] 创建 `main.tex`（ctexart文档类，7部分结构，三层架构TikZ示意图占位）
+- [x] 创建 `refs.bib`（16篇文献，BibLaTeX格式，Zotero兼容）
+- [x] 创建 `.gitignore`
+- [x] 文献导入 Zotero → 自动同步 `refs.bib`
 
-1. **大模型+工业软件融合**：「大模型 工业软件 MES PLM」「GPT 智能制造」「large language model industrial software integration」
-2. **Tesla Gigafactory 案例**：「Tesla AI 质检」「Tesla 预测性维护」「Gigafactory automation AI」
-3. **Siemens Industrial Copilot**：「Siemens Industrial Copilot」「Siemens Xcelerator AI」「西门子 工业AI」
+---
 
-**Acceptance criteria:**
-- [ ] ≥10 篇参考文献，四类来源（学术论文/行业报告/厂商文档/新闻）各有覆盖
-- [ ] CNKI 中文 ≥4，Google Scholar 英文 ≥3
-- [ ] 每条标注来源类型和可信度
-- [ ] 文献信息完整（标题、作者、来源、链接、一句话摘要）
+## Issue 1: 资料搜集与文献整理 ✅
+
+**Blocked by:** 无 | **Status:** 已完成
+
+- [x] 大模型+工业软件融合方向（4篇学术综述）
+- [x] Tesla Gigafactory 案例方向（2篇）
+- [x] Siemens Industrial Copilot 案例方向（4篇）
+- [x] 中国工业大模型方向（2篇）
+- [x] 汇总为 `references.md`（16篇，四类来源）
 
 ---
 
 ## Issue 2: 提纲细化 + 三层模型定义
 
-**Blocked by:** Issue 1（读完资料再细化）
+**Blocked by:** Issue 1
 **Type:** HITL — 框架确认后锁定
 
 结合文献，细化每节小标题、论点句、对应引用。重点：
 
 - 三层融合架构的准确定义：每层输入/输出/关键技术/对应工业软件
 - Tesla vs Siemens 案例分工明确，对应不同层
-- 每节标注引用文献编号
+- 每节标注引用文献编号（对应 `refs.bib` 中的 key）
 
 **Acceptance criteria:**
 - [ ] 每节 ≥2 个子标题
@@ -54,6 +74,8 @@
 - 大模型成为新的「智能层」
 - 引出核心问题：大模型如何与现有工业软件体系融合？
 
+**LaTeX 操作：** 直接编辑 `main.tex` 中 \section*{摘要} 和 \section{研究背景}
+
 **Acceptance criteria:**
 - [ ] 摘要 200-300 字
 - [ ] 关键词 3-5 个
@@ -66,16 +88,19 @@
 
 **Blocked by:** Issue 2
 
-**基本概念（1000-1200字），分两块：**
+**基本概念（1000-1200字），分三小节：**
 
 1. **大模型技术**：GPT 系列演进（GPT-3→GPT-4→GPT-4o）、核心能力（NLU/推理/多模态）、工业垂类大模型
-2. **工业软件体系**：MES/PLM/数字孪生定义和关系，引出三层融合架构作为分析框架
+2. **工业软件体系**：MES/PLM/数字孪生定义和关系
+3. **三层融合分析框架**：本章核心贡献，配合 TikZ 示意图（\ref{fig:three-layer}）
+
+**LaTeX 操作：** 编辑 `main.tex` \section{基本概念}
 
 **Acceptance criteria:**
 - [ ] 大模型概念准确、有引用
 - [ ] MES/PLM/数字孪生定义清晰
-- [ ] 三层融合架构示意图一张
-- [ ] 承上启下过渡到第三部分
+- [ ] 三层融合架构示意图完成
+- [ ] 承上启下
 
 ---
 
@@ -86,10 +111,12 @@
 **应用现状（1500-1800字），按三层展开：**
 
 - **感知层**：大模型 + 传感/视觉 → 质检、巡检（GPT-4o 多模态）
-- **工具层**：大模型 + 工业软件 → NL 操控 MES/ERP、自动生成 PLC 代码（SAP GPT 集成）
+- **工具层**：大模型 + 工业软件 → NL 操控 MES/ERP、自动生成 PLC 代码
 - **决策层**：大模型 + 工业大脑 → 排产优化、故障预测
 
 每层：技术原理 → 落地现状 → 局限性
+
+**LaTeX 操作：** 编辑 `main.tex` \section{应用现状}
 
 **Acceptance criteria:**
 - [ ] 三层各有独立小节
@@ -101,25 +128,24 @@
 
 ## Issue 6: 第四部分（典型案例）
 
-**Blocked by:** Issue 5（案例需应用现状做上下文）
+**Blocked by:** Issue 5
 
-**典型案例（1200-1500字），两个案例各 600-750 字：**
+**典型案例（1200-1500字），两个案例：**
 
 **Tesla Gigafactory（偏硬-产线，对应感知层+决策层）：**
-- 机器视觉质检：产线视觉模型缺陷检测
-- 预测性维护：传感器数据 + 模型预测设备故障
-- 来源：Tesla AI Day、行业分析
+- 机器视觉质检 + 预测性维护
+- 来源：Tesla AI Day、行业分析 [13][14]
 
 **Siemens Industrial Copilot（偏软-工具链，对应工具层）：**
-- NL 生成 PLC 代码（TIA Portal 集成）
-- 工程知识问答和故障排查
-- 来源：Siemens Xcelerator 白皮书、官方博客
+- NL 生成 PLC 代码（TIA Portal 集成）+ 工程知识问答
+- 来源：Siemens Xcelerator 白皮书、官方博客 [9][10][11][15]
+
+**LaTeX 操作：** 编辑 `main.tex` \section{典型案例分析}
 
 **Acceptance criteria:**
 - [ ] 每个案例：场景、技术、效果、局限四点齐全
 - [ ] 来源可靠，不编造
 - [ ] 与三层模型对位关系明确
-- [ ] 两个案例不重复论证
 
 ---
 
@@ -127,59 +153,48 @@
 
 **Blocked by:** Issue 5、Issue 6
 
-**存在问题（800-1000字）：**
-- 幻觉问题：工业场景不可靠
-- 实时性：毫秒级控制 vs 大模型推理延迟
-- 数据安全：工厂数据本地化 vs 云端推理
-- 知识壁垒：通用大模型缺乏垂直深度
+**存在问题（800-1000字）：** 幻觉/实时性/数据安全/知识壁垒
+**发展趋势（800-1000字）：** 工业操作系统智能层/边缘推理/多模态融合/标准生态
 
-**发展趋势（800-1000字）：**
-- 从「对话工具」走向「工业操作系统智能层」
-- 边缘推理 + 本地化部署（小模型、量化）
-- 多模态融合（视觉+文本+传感器一体化）
-- 工业 AI 标准化与生态构建
+**LaTeX 操作：** 编辑 `main.tex` \section{存在问题} 和 \section{发展趋势与建议}
 
 **Acceptance criteria:**
 - [ ] 问题 4 点，每点有依据
 - [ ] 趋势不空泛，有技术路线判断
-- [ ] 与案例呼应（Tesla 的实时性、Siemens 的数据安全）
+- [ ] 与案例呼应
 
 ---
 
 ## Issue 8: 第七部分（总结）+ 参考文献 + AI 声明
 
-**Blocked by:** 所有前面 Issues
+**Blocked by:** Issue 7
 
-**总结（500-600字）：** 概括全文 + 个人收获
-**参考文献（≥10篇）：** 格式统一（GB/T 7714 或 APA），来源真实
-**AI 声明：** 按课程要求注明
+- **总结（500-600字）**
+- **参考文献格式化**：检查 `refs.bib` 条目完整性，Zotero 确认所有来源
+- **AI 声明**：已在 `main.tex` 中预置模板
 
 **Acceptance criteria:**
 - [ ] 总结呼应研究背景
 - [ ] 个人收获具体
-- [ ] 参考文献格式统一、信息完整、来源真实
+- [ ] `refs.bib` 与 Zotero 同步，信息完整
 - [ ] AI 声明格式正确
 
 ---
 
-## Issue 9: 全文润色 + 格式排版 + 转 PDF + 提交
+## Issue 9: 编译 + 润色 + 格式排版 + 提交
 
 **Blocked by:** Issue 8
 **Type:** HITL — 最终人工审核
 
-1. 通读全文，检查逻辑连贯性
-2. 错别字/语病检查
-3. 引用标注检查
-4. 格式排版（标题层级、图表编号）
-5. 导出 PDF
-6. 打包 zip：班级-学号-姓名.zip
-7. 上传 FTP
+1. `xelatex main` → `biber main` → `xelatex main` → `xelatex main`
+2. 检查 PDF 输出：标题层级、图表编号、引用格式
+3. 错误修正 + 语言润色
+4. 打包 zip：班级-学号-姓名.zip
+5. 上传 FTP
 
 **Acceptance criteria:**
-- [ ] 逻辑自洽，无跳跃
-- [ ] 无错别字
-- [ ] 参考文献引用格式统一
-- [ ] PDF 符合课程要求
+- [ ] `xelatex + biber` 编译通过，无报错
+- [ ] PDF 格式符合课程要求
 - [ ] zip 命名正确、上传成功
 
 ---
@@ -187,39 +202,26 @@
 ## 依赖关系图
 
 ```
-Issue 1 (资料搜集) ── AFK，可立即开始
+Issue 0 (环境搭建) ✅
     ↓
-Issue 2 (提纲细化) ── HITL
+Issue 1 (资料搜集) ✅
+    ↓
+Issue 2 (提纲细化) ← 当前 | HITL
     ↓
 ┌───────┬──────────┐
-↓       ↓          ↓
+↓       ↓
 Issue 3 Issue 4    (并行)
 (摘要+背景)(基本概念)
     ↓       ↓
     └───┬───┘
         ↓
-   Issue 5 (应用现状) ★ 瓶颈，写完才能写案例
+   Issue 5 (应用现状) ★ 瓶颈
         ↓
    Issue 6 (典型案例)
         ↓
    Issue 7 (问题+趋势)
         ↓
-   Issue 8 (总结+文献)
+   Issue 8 (总结+文献+AI声明)
         ↓
-   Issue 9 (润色+提交) ── HITL
+   Issue 9 (编译润色提交) ── HITL
 ```
-
----
-
-## 一周时间表
-
-| 日期 | Issue | 产出 |
-|------|-------|------|
-| 6/17 | 1 | 文献清单 |
-| 6/18 上午 | 2 | 详细提纲（需确认） |
-| 6/18 下午 | 3 + 4 并行 | 摘要+背景+基本概念 |
-| 6/19 | 5 | 应用现状（核心章节） |
-| 6/20 | 6 | 案例 |
-| 6/21 | 7 + 8 并行 | 问题+趋势+总结+文献+AI声明 |
-| 6/22-23 | 9 | 润色+排版+PDF |
-| 6/24 | 缓冲/提前提交 | - |
